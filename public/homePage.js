@@ -46,9 +46,9 @@ moneyManager.conversionMoneyCallback = conversion => {
 	ApiConnector.convertMoney(conversion, conversionResponse => {
 		if (conversionResponse.success) {
 			ProfileWidget.showProfile(conversionResponse.data);
-			moneyManager.setMessage(true, "Конвертация успешна!");
+			moneyManager.setMessage(conversionResponse.success, "Конвертация успешна!");
 		} else {
-			moneyManager.setMessage(false, conversionResponse.error);
+			moneyManager.setMessage(conversionResponse.success, conversionResponse.error);
 		}
 	});
 }
